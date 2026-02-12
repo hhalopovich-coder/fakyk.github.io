@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BIO Theme</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,12 @@
 
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -29,10 +35,12 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            min-height: 100dvh;
             margin: 0;
             padding: 20px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         #bg-video {
@@ -56,6 +64,7 @@
             width: 100%;
             max-width: 1250px;
             min-height: calc(100vh - 40px);
+            min-height: calc(100dvh - 40px);
             position: relative;
             z-index: 1;
         }
@@ -83,6 +92,7 @@
             background-clip: text;
             color: transparent;
             text-shadow: 0 0 10px var(--primary-glow-color);
+            word-break: break-word;
         }
 
         .subtitle {
@@ -96,7 +106,8 @@
             margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .social-icon {
@@ -193,6 +204,7 @@
             font-size: 1rem;
             line-height: 1.6;
             color: #ccc;
+            margin-bottom: 0;
         }
 
         /* ===== GITHUB BUTTON ===== */
@@ -366,64 +378,330 @@
             flex-direction: column;
             align-items: flex-start;
             line-height: 1.2;
+            min-width: 0;
         }
 
         .tg-btn-name {
             font-size: 0.95rem;
             color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
         .tg-btn-username {
             font-size: 0.72rem;
             color: #0088cc;
             font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== TABLET — до 900px ===== */
         @media (max-width: 900px) {
+            body {
+                padding: 16px;
+                align-items: flex-start;
+            }
+
             .page-wrapper {
                 flex-direction: column;
                 align-items: center;
+                min-height: auto;
+                gap: 24px;
             }
+
+            .container {
+                max-width: 100%;
+            }
+
+            header {
+                margin-bottom: 28px;
+            }
+
+            .logo-text {
+                font-size: 3.2rem;
+            }
+
+            .info-card {
+                padding: 24px;
+            }
+
+            .info-title {
+                font-size: 1.5rem;
+                margin-bottom: 22px;
+            }
+
             .sidebar-right {
                 width: 100%;
                 max-width: 500px;
             }
+
             .sidebar-card {
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
                 padding: 18px;
+                gap: 14px;
             }
+
             .sidebar-title {
                 width: 100%;
             }
+
             .sidebar-divider {
                 width: 100%;
             }
+
             .tg-user-btn {
                 width: auto;
                 flex: 1;
-                min-width: 140px;
+                min-width: 160px;
             }
         }
 
+        /* ===== MOBILE — до 600px ===== */
         @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .page-wrapper {
+                gap: 18px;
+            }
+
+            header {
+                margin-bottom: 22px;
+            }
+
             .logo-text {
-                font-size: 3rem;
+                font-size: 2.4rem;
             }
+
+            .subtitle {
+                font-size: 1rem;
+                letter-spacing: 1.5px;
+            }
+
+            .social-links {
+                margin-top: 16px;
+                gap: 14px;
+            }
+
+            .social-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .social-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
             .info-card {
-                padding: 20px;
+                padding: 18px 14px;
+                border-radius: 16px;
+                box-shadow: 0 0 10px var(--primary-glow-color), inset 0 0 10px var(--primary-glow-color);
             }
-            .sidebar-card {
-                flex-direction: column;
+
+            .info-title {
+                font-size: 1.3rem;
+                margin-bottom: 18px;
             }
-            .tg-user-btn {
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .info-box {
+                padding: 18px 16px;
+                border-radius: 12px;
+            }
+
+            .info-box h3 {
+                font-size: 1.2rem;
+            }
+
+            .info-box p {
+                font-size: 0.92rem;
+            }
+
+            .github-section {
+                margin-top: 22px;
+            }
+
+            .github-btn {
+                padding: 14px 24px;
+                font-size: 1rem;
+                gap: 10px;
+                border-radius: 14px;
                 width: 100%;
             }
-            .github-btn {
-                padding: 14px 28px;
+
+            .github-btn svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .sidebar-right {
+                max-width: 100%;
+            }
+
+            .sidebar-card {
+                flex-direction: column;
+                padding: 16px 14px;
+                gap: 12px;
+                border-radius: 16px;
+                box-shadow: 0 0 10px var(--primary-glow-color), inset 0 0 10px var(--primary-glow-color);
+            }
+
+            .sidebar-title {
                 font-size: 1rem;
+            }
+
+            .tg-user-btn {
+                width: 100%;
+                min-width: unset;
+                padding: 12px 14px;
+                border-radius: 12px;
+                font-size: 0.9rem;
+                gap: 10px;
+            }
+
+            .tg-user-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .tg-btn-name {
+                font-size: 0.9rem;
+            }
+
+            .tg-btn-username {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ===== VERY SMALL — до 380px ===== */
+        @media (max-width: 380px) {
+            body {
+                padding: 8px;
+            }
+
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .info-card {
+                padding: 14px 10px;
+            }
+
+            .info-title {
+                font-size: 1.1rem;
+                margin-bottom: 14px;
+            }
+
+            .info-box {
+                padding: 14px 12px;
+            }
+
+            .info-box h3 {
+                font-size: 1.05rem;
+            }
+
+            .info-box p {
+                font-size: 0.85rem;
+            }
+
+            .github-btn {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+
+            .github-btn svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .sidebar-card {
+                padding: 14px 10px;
+            }
+
+            .sidebar-title {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .tg-user-btn {
+                padding: 10px 12px;
+            }
+        }
+
+        /* ===== LANDSCAPE PHONE ===== */
+        @media (max-height: 500px) and (orientation: landscape) {
+            body {
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            .page-wrapper {
+                flex-direction: row;
+                flex-wrap: wrap;
+                min-height: auto;
+                gap: 16px;
+            }
+
+            header {
+                margin-bottom: 16px;
+            }
+
+            .logo-text {
+                font-size: 2.2rem;
+            }
+
+            .info-card {
+                padding: 16px;
+            }
+
+            .info-title {
+                margin-bottom: 16px;
+                font-size: 1.3rem;
+            }
+
+            .sidebar-right {
+                width: 100%;
+            }
+
+            .sidebar-card {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                padding: 14px;
+            }
+
+            .tg-user-btn {
+                flex: 1;
+                min-width: 160px;
+                width: auto;
             }
         }
     </style>
