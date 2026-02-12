@@ -15,6 +15,7 @@
             --background-color: #000;
             --text-color: #fff;
             --card-background: #1a021a;
+            --avatar-glow: #ff4d4d;
         }
 
         * {
@@ -54,6 +55,30 @@
             object-fit: cover;
             z-index: -1;
             opacity: 0.3;
+        }
+
+        /* ===== AVATAR TOP-LEFT ===== */
+        .avatar-wrapper {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 100;
+        }
+
+        .avatar-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--avatar-glow);
+            box-shadow: 0 0 12px var(--avatar-glow), 0 0 24px rgba(255, 77, 77, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
+        }
+
+        .avatar-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--avatar-glow), 0 0 40px rgba(255, 77, 77, 0.5);
         }
 
         .page-wrapper {
@@ -407,11 +432,22 @@
                 align-items: flex-start;
             }
 
+            .avatar-wrapper {
+                top: 16px;
+                left: 16px;
+            }
+
+            .avatar-img {
+                width: 120px;
+                height: 120px;
+            }
+
             .page-wrapper {
                 flex-direction: column;
                 align-items: center;
                 min-height: auto;
                 gap: 24px;
+                padding-top: 80px;
             }
 
             .container {
@@ -469,8 +505,21 @@
                 padding: 12px;
             }
 
+            .avatar-wrapper {
+                top: 12px;
+                left: 12px;
+            }
+
+            .avatar-img {
+                width: 104px;
+                height: 104px;
+                border-width: 2px;
+                box-shadow: 0 0 8px var(--avatar-glow), 0 0 16px rgba(255, 77, 77, 0.25);
+            }
+
             .page-wrapper {
                 gap: 18px;
+                padding-top: 70px;
             }
 
             header {
@@ -592,6 +641,20 @@
                 padding: 8px;
             }
 
+            .avatar-wrapper {
+                top: 8px;
+                left: 8px;
+            }
+
+            .avatar-img {
+                width: 88px;
+                height: 88px;
+            }
+
+            .page-wrapper {
+                padding-top: 60px;
+            }
+
             .logo-text {
                 font-size: 2rem;
             }
@@ -662,11 +725,22 @@
                 padding: 10px;
             }
 
+            .avatar-wrapper {
+                top: 10px;
+                left: 10px;
+            }
+
+            .avatar-img {
+                width: 88px;
+                height: 88px;
+            }
+
             .page-wrapper {
                 flex-direction: row;
                 flex-wrap: wrap;
                 min-height: auto;
                 gap: 16px;
+                padding-top: 60px;
             }
 
             header {
@@ -710,6 +784,11 @@
     <video autoplay muted loop playsinline id="bg-video">
         <source src="background.mp4" type="video/mp4">
     </video>
+
+    <!-- AVATAR TOP-LEFT -->
+    <div class="avatar-wrapper">
+        <img src="avatar.png" alt="Avatar" class="avatar-img">
+    </div>
 
     <div class="page-wrapper">
         <!-- MAIN CONTENT -->
